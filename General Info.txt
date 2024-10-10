@@ -1,3 +1,6 @@
+#Sorry I miss the message on Urban Pro sometimes:
+#Please reach out to me on my number: 8800307651
+
 import streamlit as st
 import openai
 
