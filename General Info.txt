@@ -1,1 +1,28 @@
+import streamlit as st
+import openai
+
+# Set your OpenAI API key directly in the script
+openai.api_key = "your-openai-api-key"  # Replace with your actual OpenAI API key
+
+def generate_response(prompt):
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",  # You can change the model if necessary
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return response['choices'][0]['message']['content']
+
+def main():
+    st.title("LLM Chat Application")
+
+    user_input = st.text_input("You: ", "")
+
+    if st.button("Send"):
+        if user_input:
+            response = generate_response(user_input)
+            st.text_area("Assistant:", value=response, height=300)
+        else:
+            st.warning("Please enter a message.")
+
+if __name__ == "__main__":
+    main()
 
